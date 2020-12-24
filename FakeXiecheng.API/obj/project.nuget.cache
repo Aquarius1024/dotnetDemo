@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rSdviUtGOScG0spQipydcPSTQjdxawHhM7G2wabbt0JGic6vsPB5g891JCZofjsIFXBedT6vJ8Ts16b4vcKOEQ==",
+  "dgSpecHash": "Ks5IeNLBgwVB5HJgRAjoOwl4VF+vTCZdGztkEFJUa4DRuxgNyN/t2I1fkIPGraWygtSu0cKJWIWW5EY9Q8vBAA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\FakeXiecheng.API\\dotnetDemo\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

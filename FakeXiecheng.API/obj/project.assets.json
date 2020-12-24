@@ -5131,11 +5131,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\FakeXiecheng.API\\dotnetDemo\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
       "projectName": "FakeXiecheng.API",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\FakeXiecheng.API\\dotnetDemo\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\FakeXiecheng.API\\FakeXiecheng.API\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\FakeXiecheng.API\\dotnetDemo\\FakeXiecheng.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
