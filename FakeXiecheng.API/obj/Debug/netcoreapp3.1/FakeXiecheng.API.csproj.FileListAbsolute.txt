@@ -102,11 +102,8 @@ C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\bin\Debug\ne
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.csprojAssemblyReference.cache
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.AssemblyInfoInputs.cache
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.AssemblyInfo.cs
-C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.csproj.CoreCompileInputs.cache
-C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.RazorTargetAssemblyInfo.cache
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.csproj.CopyComplete
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\staticwebassets\FakeXiecheng.API.StaticWebAssets.Manifest.cache
@@ -114,3 +111,8 @@ C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\ne
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.dll
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.pdb
 C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.genruntimeconfig.cache
+C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Admin\Desktop\FakeXiecheng.API\dotnetDemo\FakeXiecheng.API\obj\Debug\netcoreapp3.1\FakeXiecheng.API.csprojAssemblyReference.cache

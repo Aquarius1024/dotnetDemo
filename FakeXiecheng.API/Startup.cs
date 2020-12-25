@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
+using AutoMapper;
 
 namespace FakeXiecheng.API
 {
@@ -28,7 +28,13 @@ namespace FakeXiecheng.API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(setupAction => {
+                setupAction.ReturnHttpNotAcceptable = true;
+                //setupAction.OutputFormatters.Add(
+                //    new XmlDataContractSerializerOutputFormatter()
+                //);
+
+            }).AddXmlDataContractSerializerFormatters();
             // 每次访问都创建一个，各自独立互不干扰
             //services.AddTransient<ITouristRouteRepository, MockTouristRouteRepository>(); 假数据
 
@@ -48,6 +54,9 @@ namespace FakeXiecheng.API
 
                 //option.UseMySql(Configuration["DbContext:MySQLConnectionString"]);
             });
+
+            // 扫描profile文件
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

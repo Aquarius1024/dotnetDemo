@@ -1,5 +1,6 @@
 ﻿using FakeXiecheng.API.Database;
 using FakeXiecheng.API.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +19,90 @@ namespace FakeXiecheng.API.Services
 
         public TouristRoute GetTouristRoute(Guid touristRouteId)
         {
-            return _context.TouristRoutes.FirstOrDefault(n => n.Id == touristRouteId);
+            return _context.TouristRoutes.Include(t => t.TouristRoutePictures).FirstOrDefault(n => n.Id == touristRouteId);
         }
 
-        public IEnumerable<TouristRoute> GetTouristRoutes()
+        //public IEnumerable<TouristRoute> GetTouristRoutes()
+        //{
+        //    // 连接两个表
+        //    return _context.TouristRoutes.Include(t => t.TouristRoutePictures);
+        //}
+
+        //public IEnumerable<TouristRoute> GetTouristRoutes(string keyword)
+        //{
+        //    IQueryable<TouristRoute> result = _context
+        //        .TouristRoutes
+        //        .Include(t => t.TouristRoutePictures);
+
+        //    if (!string.IsNullOrWhiteSpace(keyword))
+        //    {
+        //        keyword = keyword.Trim();
+        //        result.Where(t => t.Title.Contains(keyword));
+        //    }
+
+        //    // include vs join
+        //    return result.ToList();
+        //}
+
+        public IEnumerable<TouristRoute> GetTouristRoutes(
+            string keyword, 
+            string operatorType, 
+            int ratingValue
+        )
         {
-            return _context.TouristRoutes;
+            IQueryable<TouristRoute> result = _context
+                .TouristRoutes
+                .Include(t => t.TouristRoutePictures);
+
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                keyword = keyword.Trim();
+                result = result.Where(t => t.Title.Contains(keyword));
+            }
+            var res = result.ToList();
+
+            if(ratingValue >= 0)
+            {
+                //switch (operatorType)
+                //{
+                //    case "largeThan":
+                //        result = result.Where(t => t.Rating >= ratingValue);
+                //        break;
+                //    case "lessThan":
+                //        result = result.Where(t => t.Rating <= ratingValue);
+                //        break;
+                //    case "equalTo":
+                //    default:
+                //        result = result.Where(t => t.Rating == ratingValue);
+                //        break;
+                //}
+                result = operatorType switch
+                {
+                    "largeThan" => result.Where(t => t.Rating >= ratingValue),
+                    "lessThan" => result.Where(t => t.Rating <= ratingValue),
+                    _ => result.Where(t => t.Rating == ratingValue),
+                };
+            }
+
+            // include vs join
+            return result.ToList();
         }
+
+        public bool TouristRouteExists(Guid touristRouteId)
+        {
+            return _context.TouristRoutes.Any(t => t.Id == touristRouteId);
+        }
+
+        TouristRoutePicture ITouristRouteRepository.GetPicture(int pictureId)
+        {
+            return _context.TouristRoutePictures.Where(p => p.Id == pictureId).FirstOrDefault();
+        }
+
+        IEnumerable<TouristRoutePicture> ITouristRouteRepository.GetPictureByTouristRouteId(Guid touristRouteId)
+        {
+            return _context.TouristRoutePictures.Where(p => p.TouristRouteId == touristRouteId).ToList();
+        }
+
+        
     }
 }

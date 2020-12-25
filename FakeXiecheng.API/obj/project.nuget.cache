@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Ks5IeNLBgwVB5HJgRAjoOwl4VF+vTCZdGztkEFJUa4DRuxgNyN/t2I1fkIPGraWygtSu0cKJWIWW5EY9Q8vBAA==",
+  "dgSpecHash": "KwKxjU3uND+//ulCJxhi+ROPt0ZK6nm+ACXdbkPhBVT9EzLhn9smna63OSe8nb5cafPJ7X6aJsyAH8Ow29uToQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Desktop\\FakeXiecheng.API\\dotnetDemo\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
