@@ -37,18 +37,9 @@ namespace FakeXiecheng.API.Controllers
             //string rating  // 小于lessThan, 大于largeThan, 等于equalTo, lessThan3, largeThan4, equalTo5    
         ) // FormQuery vs FormBody
         {
-            Regex regex = new Regex(@"([A-Za-z0-9\-]+)(\d+)");
+            
 
-            string operatorType = "";
-            int ratingValue = -1;
-            Match match = regex.Match(parameters.Rating);
-            if(match.Success)
-            {
-                operatorType = match.Groups[1].Value;
-                ratingValue = Int32.Parse(match.Groups[2].Value);
-            }
-
-            var touristRouteFromRepo = _touristRouteRepository.GetTouristRoutes(parameters.Keyword, operatorType, ratingValue);
+            var touristRouteFromRepo = _touristRouteRepository.GetTouristRoutes(parameters.Keyword, parameters.RatingOperator, parameters.RatingValue);
             if(touristRouteFromRepo == null || touristRouteFromRepo.Count() <= 0)
             {
                 return NotFound("没有旅游路线");

@@ -47,7 +47,7 @@ namespace FakeXiecheng.API.Services
         public IEnumerable<TouristRoute> GetTouristRoutes(
             string keyword, 
             string operatorType, 
-            int ratingValue
+            int? ratingValue
         )
         {
             IQueryable<TouristRoute> result = _context
