@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using System.Text.RegularExpressions;
 using FakeXiecheng.API.ResourceParameters;
+using FakeXiecheng.API.Models;
 
 namespace FakeXiecheng.API.Controllers
 {
@@ -49,7 +50,7 @@ namespace FakeXiecheng.API.Controllers
         }
 
         // api/touristRoutes/{touristRouteId}
-        [HttpGet("{touristRouteId:Guid}")]
+        [HttpGet("{touristRouteId:Guid}", Name = "GetTouristRouteById")]
         [HttpHead]
         public IActionResult GetTouristRouteById(Guid touristRouteId)
         {
@@ -81,6 +82,22 @@ namespace FakeXiecheng.API.Controllers
             var touristRouteDto = _mapper.Map<TouristRouteDto>(touristRouteFromRepo);
 
             return Ok(touristRouteDto);
+        }
+
+        [HttpPost]
+        public IActionResult CreateTouristRoute([FromBody] TouristRouteForCreationDto touristRouteForCreationDto)
+        {
+            var touristRouteModel = _mapper.Map<TouristRoute>(touristRouteForCreationDto);
+
+            _touristRouteRepository.AddTouristRoute(touristRouteModel);
+            _touristRouteRepository.Save();
+            var touristRouteToReturn = _mapper.Map<TouristRouteDto>(touristRouteModel);
+
+            return CreatedAtRoute(
+                "GetTouristRouteById",
+                new { touristRouteId = touristRouteToReturn.Id },
+                touristRouteToReturn
+            );
         }
     }
 }
