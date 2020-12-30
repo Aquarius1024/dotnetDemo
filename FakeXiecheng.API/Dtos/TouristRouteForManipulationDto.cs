@@ -1,15 +1,21 @@
-﻿using FakeXiecheng.API.Models;
+﻿using FakeXiecheng.API.ValidationAttributes;
 using System;
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FakeXiecheng.API.Dtos
 {
-    public class TouristRouteDto
+    [TouristRouteTitleMustBeDifferentFromDescriptionAttribute]
+    public abstract class TouristRouteForManipulationDto
     {
-        public Guid Id { get; set; }
+        [Required(ErrorMessage = "title不可为空")]      // 属性值验证
+        [MaxLength(100)]
         public string Title { get; set; }
-        public string Description { get; set; }
+        [Required]
+        [MaxLength(1500)]
+        public virtual string Description { get; set; }
         public decimal Price { get; set; }
         //public decimal OriginalPrice { get; set; }
         //public double? DiscountPresent { get; set; }
@@ -23,6 +29,8 @@ namespace FakeXiecheng.API.Dtos
         public string TravelDays { get; set; }
         public string TripType { get; set; }
         public string DepartureCity { get; set; }
-        public ICollection<TouristRoutePictureDto> TouristRoutePictures { get; set; }
+        public ICollection<TouristRoutePictureForCreationDto> TouristRoutePictures { get; set; }
+            = new List<TouristRoutePictureForCreationDto>();
+
     }
 }

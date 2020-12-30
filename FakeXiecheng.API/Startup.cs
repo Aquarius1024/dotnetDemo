@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Serialization;
 
 namespace FakeXiecheng.API
 {
@@ -34,7 +36,31 @@ namespace FakeXiecheng.API
                 //    new XmlDataContractSerializerOutputFormatter()
                 //);
 
-            }).AddXmlDataContractSerializerFormatters();
+            })
+            .AddNewtonsoftJson(setupAction => {
+                setupAction.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            })
+            .AddXmlDataContractSerializerFormatters()
+            .ConfigureApiBehaviorOptions( setupAction => {
+                setupAction.InvalidModelStateResponseFactory = context =>
+                {
+                    var problemDetail = new ValidationProblemDetails(context.ModelState)
+                    {
+                        Type = "asd",
+                        Title = "数据验证失败",
+                        Status = StatusCodes.Status422UnprocessableEntity,
+                        Detail = "请看详细说明",
+                        Instance = context.HttpContext.Request.Path
+                    };
+
+                    problemDetail.Extensions.Add("traceId", context.HttpContext.TraceIdentifier);
+
+                    return new UnprocessableEntityObjectResult(problemDetail)
+                    {
+                        ContentTypes = { "application/problem+json" }
+                    };
+                };
+            });
             // 每次访问都创建一个，各自独立互不干扰
             //services.AddTransient<ITouristRouteRepository, MockTouristRouteRepository>(); 假数据
 

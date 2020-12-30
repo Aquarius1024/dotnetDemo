@@ -17,9 +17,9 @@ namespace FakeXiecheng.API.Services
             _context = context;
         }
 
-        public TouristRoute GetTouristRoute(Guid touristRouteId)
+        public async Task<TouristRoute> GetTouristRouteAsync(Guid touristRouteId)
         {
-            return _context.TouristRoutes.Include(t => t.TouristRoutePictures).FirstOrDefault(n => n.Id == touristRouteId);
+            return await _context.TouristRoutes.Include(t => t.TouristRoutePictures).FirstOrDefaultAsync(n => n.Id == touristRouteId);
         }
 
         //public IEnumerable<TouristRoute> GetTouristRoutes()
@@ -44,7 +44,7 @@ namespace FakeXiecheng.API.Services
         //    return result.ToList();
         //}
 
-        public IEnumerable<TouristRoute> GetTouristRoutes(
+        public async Task<IEnumerable<TouristRoute>> GetTouristRoutesAsync(
             string keyword, 
             string operatorType, 
             int? ratingValue
@@ -85,40 +85,30 @@ namespace FakeXiecheng.API.Services
             }
 
             // include vs join
-            return result.ToList();
+            return await result.ToListAsync();
         }
-
-        public bool TouristRouteExists(Guid touristRouteId)
+        public async Task<bool> TouristRouteExistsAsync(Guid touristRouteId)
         {
-            return _context.TouristRoutes.Any(t => t.Id == touristRouteId);
+            return await _context.TouristRoutes.AnyAsync(t => t.Id == touristRouteId);
         }
-
-        public void AddTouristRoute(TouristRoute touristRoute)
+        public async Task<bool> SaveAsync()
         {
-            if(touristRoute == null)
-            {
-                throw new ArgumentNullException(nameof(touristRoute));
-            }
-
-            _context.TouristRoutes.Add(touristRoute);
-            //_context.SaveChanges();
+            return (await _context.SaveChangesAsync() >= 0);
         }
-
-        public bool Save()
+        public async Task<TouristRoutePicture> GetPictureAsync(int pictureId)
         {
-            return (_context.SaveChanges() >= 0);
+            return await _context.TouristRoutePictures
+                .Where(p => p.Id == pictureId).FirstOrDefaultAsync();
         }
-
-        public TouristRoutePicture GetPicture(int pictureId)
+        public async Task<IEnumerable<TouristRoutePicture>> GetPictureByTouristRouteIdAsync(Guid touristRouteId)
         {
-            return _context.TouristRoutePictures.Where(p => p.Id == pictureId).FirstOrDefault();
+            return await _context.TouristRoutePictures
+                .Where(p => p.TouristRouteId == touristRouteId).ToListAsync();
         }
-
-        public IEnumerable<TouristRoutePicture> GetPictureByTouristRouteId(Guid touristRouteId)
+        public async Task<IEnumerable<TouristRoute>> GetTouristRoutesByIDListAsync(IEnumerable<Guid> ids)
         {
-            return _context.TouristRoutePictures.Where(p => p.TouristRouteId == touristRouteId).ToList();
+            return await _context.TouristRoutes.Where(t => ids.Contains(t.Id)).ToListAsync();
         }
-
         public void AddTouristRoutePicture(Guid touristRouteId, TouristRoutePicture touristRoutePicture)
         {
             if(touristRouteId == Guid.Empty)
@@ -135,7 +125,27 @@ namespace FakeXiecheng.API.Services
             _context.TouristRoutePictures.Add(touristRoutePicture);
 
         }
+        public void AddTouristRoute(TouristRoute touristRoute)
+        {
+            if (touristRoute == null)
+            {
+                throw new ArgumentNullException(nameof(touristRoute));
+            }
 
-
+            _context.TouristRoutes.Add(touristRoute);
+            //_context.SaveChanges();
+        }
+        public void DeleteTouristRoute(TouristRoute touristRoute)
+        {
+            _context.TouristRoutes.Remove(touristRoute);
+        }
+        public void DeleteTouristRoutePicture(TouristRoutePicture touristRoutePicture)
+        {
+            _context.TouristRoutePictures.Remove(touristRoutePicture);
+        }
+        public void DeleteTouristRoutes(IEnumerable<TouristRoute> touristRoutes)
+        {
+            _context.TouristRoutes.RemoveRange(touristRoutes);
+        }
     }
 }
