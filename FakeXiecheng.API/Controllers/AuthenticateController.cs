@@ -44,7 +44,7 @@ namespace FakeXiecheng.API.Controllers
             var signingCredentials = new SigningCredentials(signingKey, signingAlgorithm);
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["Authentication:Issure"],
+                issuer: _configuration["Authentication:Issuer"],
                 audience: _configuration["Authentication:Audience"],
                 claims,
                 notBefore: DateTime.UtcNow,
